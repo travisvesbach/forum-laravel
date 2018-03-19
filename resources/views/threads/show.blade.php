@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="card">
+            <div class="card form-group">
                 <div class="card-header">
                     <a href="#">{{ $thread->creator->name }}</a> posted: {{ $thread->title }}</div>
 
