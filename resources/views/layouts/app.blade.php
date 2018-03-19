@@ -22,6 +22,17 @@
                 </a>
                 <a class="navbar-brand" href="/threads">All Threads</a>
 
+                <span class="navbar-brand dropdown">
+                    <a href="#" class="navbar-brand dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Channels <span class="caret"></span></a>
+
+                    <ul class="dropdown-menu">
+                        @foreach (App\Channel::all() as $channel)
+                            <li><a class="dropdown-item" href="/threads/{{$channel->slug}}">{{$channel->name}}</a></li>
+                        @endforeach
+                    </ul>
+
+
+                </span>    
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>

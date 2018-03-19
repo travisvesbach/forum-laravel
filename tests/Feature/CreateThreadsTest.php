@@ -18,12 +18,6 @@ class CreateThreadsTest extends TestCase
 
         $this->post('/threads')->assertRedirect('/login');
 
-//    	$this->expectException('Illuminate\Auth\AuthenticationException');
-
-//    	$thread = make('App\Thread');
-
-//    	$this->post('/threads', $thread->toArray());
-
     }
 
     /** @test */
