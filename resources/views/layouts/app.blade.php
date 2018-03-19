@@ -20,7 +20,16 @@
                 <a class="navbar-brand" href="{{ url('/') }}">
                     {{ config('app.name', 'Laravel') }}
                 </a>
-                <a class="navbar-brand" href="/threads">All Threads</a>
+                <span class="navbar-brand dropdown">
+                    <a href="#" class="navbar-brand dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Browse <span class="caret"></span></a>
+
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="/threads">All Threads</a></li>
+                        @if (auth()->check())
+                            <li><a class="dropdown-item" href="/threads?by={{ auth()->user()->name }}">My Threads</a></li>
+                        @endif
+                    </ul>
+                </span>  
                 <a class="navbar-brand" href="/threads/create">New Thread</a>
                 <span class="navbar-brand dropdown">
                     <a href="#" class="navbar-brand dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Channels <span class="caret"></span></a>
