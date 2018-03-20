@@ -6,6 +6,15 @@ use Illuminate\Database\Eloquent\Model;
 
 class Thread extends Model
 {
+
+    protected static function boot() {
+        parent::boot();
+
+        static::addGlobalScope('replyCount', function($builder) {
+            $builder->withCount('replies');
+        });
+    }
+
     /**
      * Don't auto-apply mass assignment protection.
      *

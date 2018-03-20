@@ -1,4 +1,4 @@
-<div class="card">
+<div class="card form-group">
     <div class="card-header">
         <a href="#">
             {{ $reply->owner->name }}
