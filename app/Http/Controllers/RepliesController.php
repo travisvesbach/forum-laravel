@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Thread;
+use App\Reply;
 
 class RepliesController extends Controller
 {
@@ -21,5 +22,14 @@ class RepliesController extends Controller
     		'user_id' => auth()->id()
     	]);
     	return back()->with('flash', 'Your reply has been left.');
+    }
+
+    public function destroy(Reply $reply) {
+        $this->authorize('update', $reply);
+
+        $reply->delete();
+
+        return back();
+
     }
 }
