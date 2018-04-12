@@ -1,4 +1,4 @@
-<div class="card form-group">
+<div id="reply-{{ $reply->id }}" class="card form-group">
     <div class="card-header">
     	<div class="level">
     		<h6 class="flex">
