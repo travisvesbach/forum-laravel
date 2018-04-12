@@ -12,6 +12,16 @@ class Reply extends Model
 
     protected $with = ['owner', 'favorites'];
 
+
+    // Found in the comments of lesson 31 to fix an issue with favorites not being deleted when deleting a thread.
+    protected static function boot() {
+        parent::boot();
+
+        static::deleting(function($reply) {
+            $reply->favorites->each->delete();
+        });
+    }
+
     public function owner() {
     	return $this->belongsTo(User::class, 'user_id');
     }
@@ -22,6 +32,11 @@ class Reply extends Model
     public function path() {
     	return $this->thread->path() . "#reply-{$this->id}";
     }
+
+    // Found in the comments of lesson 31 to fix an issue with favorites not being deleted when deleting a thread.
+    public function favorites() {
+        return $this->morphMany(Favorite::class, 'favorited');
+    }    
 
 
 }
