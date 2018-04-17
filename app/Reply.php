@@ -12,6 +12,8 @@ class Reply extends Model
 
     protected $with = ['owner', 'favorites'];
 
+    protected $appends = ['favoritesCount', 'isFavorited'];
+
 
     // Found in the comments of lesson 31 to fix an issue with favorites not being deleted when deleting a thread.
     protected static function boot() {
