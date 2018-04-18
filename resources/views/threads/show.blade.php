@@ -32,37 +32,24 @@
 
                     </div>
 
-                    <replies :data="{{ $thread->replies }}" @removed="repliesCount--"></replies>
+                    <replies :data="{{ $thread->replies }}" @added="repliesCount++" @removed="repliesCount--"></replies>
                     
 
 
                     {{-- {{ $replies->links() }} --}}
 
-                    @if (auth()->check())
-                        <form method="POST" action="{{ $thread->path() . '/replies' }}">
-                            {{ csrf_field() }}
-                            <div class="form-group">
-                                <textarea name="body" id="body" class="form-control" placeholder="Have soemthing to say?" rows="5"></textarea>
-                            </div>
-                            <button type="submit" class="btn btn-default">Post</button>
-                        </form>
+
                 </div>
                 <div class="col-md-4">
                     <div class="card form-group">
                         <div class="card-body">
                             <p>
                                 This thread was published {{ $thread->created_at->diffForHumans() }} by <a href="#">{{ $thread->creator->name }}</a>, and currently has <span v-text="repliesCount"></span> {{ str_plural('comment', $thread->replies_count) }}.
-                             </p>
-                            
+                             </p>  
                         </div>
-
                     </div>
-
                 </div>
             </div>
-            @else
-                <p class="text-center">Please <a href="{{ route('login') }}">sign in</a> to participate in this discussion.</p>
-            @endif
         </div>
     </thread-view>
 @endsection
