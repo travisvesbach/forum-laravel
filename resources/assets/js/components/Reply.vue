@@ -73,7 +73,7 @@
 
 				flash('Updated!');
 			},
-			destroy() {
+			destroy() {vue
 				axios.delete('/replies/' + this.data.id);
 
 				this.$emit('deleted', this.data.id);
